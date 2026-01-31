@@ -18,6 +18,7 @@ namespace MenuPlanner.Core.Models
 
         public double TotalCalories => Quantity * CaloriesPerUnit;
         public double TotalPrice => Quantity * PricePerUnit;
+        public string Store { get; set; }   // В каком магазине куплено
 
         public override string ToString() =>
             $"{Name} {Quantity}{Unit}";

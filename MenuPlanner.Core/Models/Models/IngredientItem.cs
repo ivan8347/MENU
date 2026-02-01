@@ -13,12 +13,17 @@ namespace MenuPlanner.Core.Models
         public double Quantity { get; set; }      // Количество
         public string Unit { get; set; }          // Единица измерения (г, кг, мл, шт)
 
+
         public double CaloriesPerUnit { get; set; }   // Калорийность на 1 единицу
         public double PricePerUnit { get; set; }      // Цена за 1 единицу
+        public double BreadUnitsPerUnit { get; set; }   // ХЕ за 1 единицу
+
+        public string Store { get; set; }   // В каком магазине куплено
 
         public double TotalCalories => Quantity * CaloriesPerUnit;
         public double TotalPrice => Quantity * PricePerUnit;
-        public string Store { get; set; }   // В каком магазине куплено
+        public double TotalBreadUnits => Quantity * BreadUnitsPerUnit;
+
 
         public override string ToString() =>
             $"{Name} {Quantity}{Unit}";

@@ -39,7 +39,8 @@ namespace MENU
                 txtIngQty.Text,
                 txtIngUnit.Text,
                 txtIngCalories.Text,
-                txtIngPrice.Text,
+                txtPrice.Text,
+                txtIngBreadUnits.Text,
                 cmbStore.SelectedItem?.ToString()
             );
 
@@ -47,7 +48,7 @@ namespace MENU
                  txtIngQty.Clear();
                  txtIngUnit.Clear();
                  txtIngCalories.Clear();
-                 txtIngPrice.Clear();
+                 txtPrice.Clear();
                  cmbStore.SelectedIndex = -1;
         }
 
@@ -77,11 +78,11 @@ namespace MENU
         {
             var recipe = new Recipe
             {
-                Name = txtName.Text,
+                Name = txtRecipeName.Text,
                 Instructions = txtInstructions.Text,
                 Freezable = chkFreezable.Checked,
                 ImagePath = txtImagePath.Text,
-                VideoLink = txtVideoLink.Text,
+                VideoLink = txtVideo.Text,
                 Ingredients = new List<IngredientItem>()
             };
 
@@ -96,6 +97,8 @@ namespace MENU
                     Unit = row.Cells["colUnit"].Value?.ToString(),
                     CaloriesPerUnit = double.Parse(row.Cells["colCalories"].Value?.ToString()),
                     PricePerUnit = double.Parse(row.Cells["colPrice"].Value?.ToString()),
+                    BreadUnitsPerUnit = double.Parse(row.Cells["colBreadUnits"].Value?.ToString()),
+
                     Store = row.Cells["colStore"].Value?.ToString()
                 });
             }
@@ -131,6 +134,11 @@ namespace MENU
         
 
         private void txtVideoLink_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvIngredients_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

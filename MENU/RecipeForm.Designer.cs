@@ -31,12 +31,19 @@
             this.txtRecipeName = new System.Windows.Forms.TextBox();
             this.lblProduct = new System.Windows.Forms.Label();
             this.lblInstruction = new System.Windows.Forms.Label();
-            this.chlFreezable = new System.Windows.Forms.CheckBox();
+            this.chkFreezable = new System.Windows.Forms.CheckBox();
             this.lblImagePath = new System.Windows.Forms.Label();
             this.btnChoosePhoto = new System.Windows.Forms.Button();
             this.txtVideo = new System.Windows.Forms.TextBox();
             this.lblVideo = new System.Windows.Forms.Label();
             this.dgvIngredients = new System.Windows.Forms.DataGridView();
+            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCalories = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colBreadUnits = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colStore = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmbStore = new System.Windows.Forms.ComboBox();
             this.btnAddIngredient = new System.Windows.Forms.Button();
             this.btnRemoveIngredient = new System.Windows.Forms.Button();
@@ -52,13 +59,6 @@
             this.lblRecipeName = new System.Windows.Forms.Label();
             this.picPhoto = new System.Windows.Forms.PictureBox();
             this.txtInstruction = new System.Windows.Forms.TextBox();
-            this.colStore = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colBreadUnits = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCalories = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIngredients)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPhoto)).BeginInit();
@@ -74,7 +74,6 @@
             this.txtRecipeName.Name = "txtRecipeName";
             this.txtRecipeName.Size = new System.Drawing.Size(300, 30);
             this.txtRecipeName.TabIndex = 0;
-            this.txtRecipeName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
             // 
             // lblProduct
             // 
@@ -96,17 +95,17 @@
             this.lblInstruction.TabIndex = 2;
             this.lblInstruction.Text = "Инструкция :";
             // 
-            // chlFreezable
+            // chkFreezable
             // 
-            this.chlFreezable.AutoSize = true;
-            this.chlFreezable.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.chlFreezable.Location = new System.Drawing.Point(120, 350);
-            this.chlFreezable.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.chlFreezable.Name = "chlFreezable";
-            this.chlFreezable.Size = new System.Drawing.Size(210, 27);
-            this.chlFreezable.TabIndex = 4;
-            this.chlFreezable.Text = "Можно замораживать";
-            this.chlFreezable.UseVisualStyleBackColor = true;
+            this.chkFreezable.AutoSize = true;
+            this.chkFreezable.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.chkFreezable.Location = new System.Drawing.Point(120, 350);
+            this.chkFreezable.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chkFreezable.Name = "chkFreezable";
+            this.chkFreezable.Size = new System.Drawing.Size(210, 27);
+            this.chkFreezable.TabIndex = 4;
+            this.chkFreezable.Text = "Можно замораживать";
+            this.chkFreezable.UseVisualStyleBackColor = true;
             // 
             // lblImagePath
             // 
@@ -129,7 +128,6 @@
             this.btnChoosePhoto.TabIndex = 7;
             this.btnChoosePhoto.Text = "Выбрать фото";
             this.btnChoosePhoto.UseVisualStyleBackColor = true;
-            this.btnChoosePhoto.Click += new System.EventHandler(this.btnBrowseImage_Click);
             // 
             // txtVideo
             // 
@@ -139,7 +137,6 @@
             this.txtVideo.Name = "txtVideo";
             this.txtVideo.Size = new System.Drawing.Size(300, 30);
             this.txtVideo.TabIndex = 8;
-            this.txtVideo.TextChanged += new System.EventHandler(this.txtVideoLink_TextChanged);
             // 
             // lblVideo
             // 
@@ -172,7 +169,55 @@
             this.dgvIngredients.RowTemplate.Height = 24;
             this.dgvIngredients.Size = new System.Drawing.Size(860, 250);
             this.dgvIngredients.TabIndex = 10;
-            this.dgvIngredients.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvIngredients_CellContentClick);
+            // 
+            // colName
+            // 
+            this.colName.HeaderText = "Название";
+            this.colName.MinimumWidth = 6;
+            this.colName.Name = "colName";
+            this.colName.ReadOnly = true;
+            // 
+            // colQty
+            // 
+            this.colQty.HeaderText = "Кол-во";
+            this.colQty.MinimumWidth = 6;
+            this.colQty.Name = "colQty";
+            this.colQty.ReadOnly = true;
+            // 
+            // colUnit
+            // 
+            this.colUnit.HeaderText = "Ед.изм.";
+            this.colUnit.MinimumWidth = 6;
+            this.colUnit.Name = "colUnit";
+            this.colUnit.ReadOnly = true;
+            // 
+            // colCalories
+            // 
+            this.colCalories.HeaderText = "Кал/ед";
+            this.colCalories.MinimumWidth = 6;
+            this.colCalories.Name = "colCalories";
+            this.colCalories.ReadOnly = true;
+            // 
+            // colBreadUnits
+            // 
+            this.colBreadUnits.HeaderText = "Хе/ед";
+            this.colBreadUnits.MinimumWidth = 6;
+            this.colBreadUnits.Name = "colBreadUnits";
+            this.colBreadUnits.ReadOnly = true;
+            // 
+            // colPrice
+            // 
+            this.colPrice.HeaderText = "Цена/ед.";
+            this.colPrice.MinimumWidth = 6;
+            this.colPrice.Name = "colPrice";
+            this.colPrice.ReadOnly = true;
+            // 
+            // colStore
+            // 
+            this.colStore.HeaderText = "Магазин";
+            this.colStore.MinimumWidth = 6;
+            this.colStore.Name = "colStore";
+            this.colStore.ReadOnly = true;
             // 
             // cmbStore
             // 
@@ -205,7 +250,6 @@
             this.btnRemoveIngredient.TabIndex = 13;
             this.btnRemoveIngredient.Text = "Удалить выбранный";
             this.btnRemoveIngredient.UseVisualStyleBackColor = true;
-            this.btnRemoveIngredient.Click += new System.EventHandler(this.btnRemoveIngredient_Click);
             // 
             // btnSave
             // 
@@ -344,55 +388,6 @@
             this.txtInstruction.Size = new System.Drawing.Size(300, 120);
             this.txtInstruction.TabIndex = 26;
             // 
-            // colStore
-            // 
-            this.colStore.HeaderText = "Магазин";
-            this.colStore.MinimumWidth = 6;
-            this.colStore.Name = "colStore";
-            this.colStore.ReadOnly = true;
-            // 
-            // colPrice
-            // 
-            this.colPrice.HeaderText = "Цена/ед.";
-            this.colPrice.MinimumWidth = 6;
-            this.colPrice.Name = "colPrice";
-            this.colPrice.ReadOnly = true;
-            // 
-            // colBreadUnits
-            // 
-            this.colBreadUnits.HeaderText = "Хе/ед";
-            this.colBreadUnits.MinimumWidth = 6;
-            this.colBreadUnits.Name = "colBreadUnits";
-            this.colBreadUnits.ReadOnly = true;
-            // 
-            // colCalories
-            // 
-            this.colCalories.HeaderText = "Кал/ед";
-            this.colCalories.MinimumWidth = 6;
-            this.colCalories.Name = "colCalories";
-            this.colCalories.ReadOnly = true;
-            // 
-            // colUnit
-            // 
-            this.colUnit.HeaderText = "Ед.изм.";
-            this.colUnit.MinimumWidth = 6;
-            this.colUnit.Name = "colUnit";
-            this.colUnit.ReadOnly = true;
-            // 
-            // colQty
-            // 
-            this.colQty.HeaderText = "Кол-во";
-            this.colQty.MinimumWidth = 6;
-            this.colQty.Name = "colQty";
-            this.colQty.ReadOnly = true;
-            // 
-            // colName
-            // 
-            this.colName.HeaderText = "Название";
-            this.colName.MinimumWidth = 6;
-            this.colName.Name = "colName";
-            this.colName.ReadOnly = true;
-            // 
             // RecipeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
@@ -418,7 +413,7 @@
             this.Controls.Add(this.txtVideo);
             this.Controls.Add(this.btnChoosePhoto);
             this.Controls.Add(this.lblImagePath);
-            this.Controls.Add(this.chlFreezable);
+            this.Controls.Add(this.chkFreezable);
             this.Controls.Add(this.lblInstruction);
             this.Controls.Add(this.lblProduct);
             this.Controls.Add(this.txtRecipeName);
@@ -426,7 +421,6 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "RecipeForm";
             this.Text = "RecipeForm";
-            this.Load += new System.EventHandler(this.RecipeForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvIngredients)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuantity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPhoto)).EndInit();
@@ -441,7 +435,7 @@
         private System.Windows.Forms.Label lblProduct;
         private System.Windows.Forms.Label lblInstruction;
         private System.Windows.Forms.TextBox txtInstructions;
-        private System.Windows.Forms.CheckBox chlFreezable;
+        private System.Windows.Forms.CheckBox chkFreezable;
         private System.Windows.Forms.Label lblImagePath;
         private System.Windows.Forms.Button btnChoosePhoto;
         private System.Windows.Forms.TextBox txtVideo;

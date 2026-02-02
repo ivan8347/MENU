@@ -3,29 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace MenuPlanner.Core.Models
-
 {
-
     public class Recipe
     {
         public string Name { get; set; }
-        public string Instructions { get; set; }
-        public bool Freezable { get; set; }
-        public string ImagePath { get; set; }
-        public string VideoLink { get; set; }
 
-        public List<IngredientItem> Ingredients { get; set; } = new List<IngredientItem>();
+        public string PhotoPath { get; set; }
 
-        public double TotalCalories => Ingredients.Sum(i => i.TotalCalories);
-        public double TotalPrice => Ingredients.Sum(i => i.TotalPrice);
-        public double TotalBreadUnits => Ingredients.Sum(i => i.TotalBreadUnits);
+        public string Video { get; set; }
 
-        public override string ToString() => Name;
+        public string Instruction { get; set; }
+
+        public bool CanBeFrozen { get; set; }
+
+        public List<RecipeIngredient> Ingredients { get; set; } = new List<RecipeIngredient>();
     }
 }
+
 
 

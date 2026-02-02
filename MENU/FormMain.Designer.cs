@@ -34,6 +34,8 @@
             this.btnAddRecipe = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
+            this.btnEditRecipe = new System.Windows.Forms.Button();
+            this.lstRecipes = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMenu)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,9 +54,11 @@
             // 
             // btnGenerateMenu
             // 
-            this.btnGenerateMenu.Location = new System.Drawing.Point(518, 12);
+            this.btnGenerateMenu.AutoSize = true;
+            this.btnGenerateMenu.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnGenerateMenu.Location = new System.Drawing.Point(10, 46);
             this.btnGenerateMenu.Name = "btnGenerateMenu";
-            this.btnGenerateMenu.Size = new System.Drawing.Size(150, 56);
+            this.btnGenerateMenu.Size = new System.Drawing.Size(189, 56);
             this.btnGenerateMenu.TabIndex = 1;
             this.btnGenerateMenu.Text = "Сформировать меню";
             this.btnGenerateMenu.UseVisualStyleBackColor = true;
@@ -62,7 +66,9 @@
             // 
             // btnCart
             // 
-            this.btnCart.Location = new System.Drawing.Point(674, 12);
+            this.btnCart.AutoSize = true;
+            this.btnCart.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnCart.Location = new System.Drawing.Point(751, 12);
             this.btnCart.Name = "btnCart";
             this.btnCart.Size = new System.Drawing.Size(100, 56);
             this.btnCart.TabIndex = 2;
@@ -72,9 +78,11 @@
             // 
             // btnAddRecipe
             // 
-            this.btnAddRecipe.Location = new System.Drawing.Point(362, 12);
+            this.btnAddRecipe.AutoSize = true;
+            this.btnAddRecipe.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnAddRecipe.Location = new System.Drawing.Point(10, 108);
             this.btnAddRecipe.Name = "btnAddRecipe";
-            this.btnAddRecipe.Size = new System.Drawing.Size(150, 56);
+            this.btnAddRecipe.Size = new System.Drawing.Size(156, 56);
             this.btnAddRecipe.TabIndex = 3;
             this.btnAddRecipe.Text = "Добавить рецепт";
             this.btnAddRecipe.UseVisualStyleBackColor = true;
@@ -82,14 +90,17 @@
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(0, 12);
+            this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txtSearch.Location = new System.Drawing.Point(10, 10);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(250, 22);
+            this.txtSearch.Size = new System.Drawing.Size(250, 30);
             this.txtSearch.TabIndex = 4;
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(256, 12);
+            this.btnSearch.AutoSize = true;
+            this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnSearch.Location = new System.Drawing.Point(277, 10);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(100, 56);
             this.btnSearch.TabIndex = 5;
@@ -97,11 +108,36 @@
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
+            // btnEditRecipe
+            // 
+            this.btnEditRecipe.AutoSize = true;
+            this.btnEditRecipe.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnEditRecipe.Location = new System.Drawing.Point(10, 170);
+            this.btnEditRecipe.Name = "btnEditRecipe";
+            this.btnEditRecipe.Size = new System.Drawing.Size(199, 33);
+            this.btnEditRecipe.TabIndex = 6;
+            this.btnEditRecipe.Text = "Редактировать рецепт";
+            this.btnEditRecipe.UseVisualStyleBackColor = true;
+            this.btnEditRecipe.Click += new System.EventHandler(this.btnEditRecipe_Click);
+            // 
+            // lstRecipes
+            // 
+            this.lstRecipes.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lstRecipes.FormattingEnabled = true;
+            this.lstRecipes.ItemHeight = 23;
+            this.lstRecipes.Location = new System.Drawing.Point(228, 170);
+            this.lstRecipes.Name = "lstRecipes";
+            this.lstRecipes.Size = new System.Drawing.Size(120, 96);
+            this.lstRecipes.TabIndex = 7;
+            this.lstRecipes.SelectedIndexChanged += new System.EventHandler(this.lstRecipes_SelectedIndexChanged);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(863, 609);
+            this.Controls.Add(this.lstRecipes);
+            this.Controls.Add(this.btnEditRecipe);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.btnAddRecipe);
@@ -124,6 +160,8 @@
         private System.Windows.Forms.Button btnAddRecipe;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Button btnEditRecipe;
+        private System.Windows.Forms.ListBox lstRecipes;
     }
 }
 

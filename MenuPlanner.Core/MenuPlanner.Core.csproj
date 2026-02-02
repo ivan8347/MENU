@@ -46,6 +46,7 @@
     <Compile Include="Models\Models\IngredientItem.cs" />
     <Compile Include="Models\Models\ProductItem.cs" />
     <Compile Include="Models\Models\Recipe.cs" />
+    <Compile Include="Models\Models\RecipeIngredient.cs" />
     <Compile Include="Models\Models\ShoppingCart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

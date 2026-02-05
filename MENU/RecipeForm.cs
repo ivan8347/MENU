@@ -9,6 +9,7 @@ using System.Xml.Linq;
 
 
 
+
 namespace MENU
 {
     public partial class RecipeForm : Form
@@ -16,59 +17,21 @@ namespace MENU
         private Recipe _recipeToEdit;
         private string _photoPath;
 
-        // Локальный класс продукта (если пока нет ProductService)
-        private class Product
-        {
-            public string Name { get; set; }
-            public string Unit { get; set; }
-            public double CaloriesPerUnit { get; set; }
-            public double BreadUnitsPerUnit { get; set; }
-            public double PricePerUnit { get; set; }
-            public string Store { get; set; }
-
-            public override string ToString() => Name;
-        }
-
-        private List<Product> products = new List<Product>();
-
-
         public RecipeForm()
         {
             InitializeComponent();
-            LoadProducts();
-        }
+            cmbProductName.DataSource = ProductService.Instance.Products;
 
+        }
         public RecipeForm(Recipe recipe)
         {
             InitializeComponent();
-            LoadProducts();
+            cmbProductName.DataSource = ProductService.Instance.Products; 
             _recipeToEdit = recipe;
             LoadRecipeData();
         }
-        private void LoadProducts()
-        {
-            products.Add(new Product
-            {
-                Name = "Мука",
-                Unit = "г",
-                CaloriesPerUnit = 3.64,
-                BreadUnitsPerUnit = 0.007,
-                PricePerUnit = 20,
-                Store = "Ашан"
-            });
 
-            products.Add(new Product
-            {
-                Name = "Яйцо",
-                Unit = "шт",
-                CaloriesPerUnit = 70,
-                BreadUnitsPerUnit = 0.5,
-                PricePerUnit = 10,
-                Store = "Глобус"
-            });
 
-            cmbProductName.DataSource = products;
-        }
 
         private void cmbProductName_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -107,6 +70,8 @@ namespace MENU
                     ing.Store
                 );
             }
+            UpdateTotals();
+
         }
 
 
@@ -133,13 +98,17 @@ namespace MENU
                 totalBreadUnits,
                 product.PricePerUnit,
                 product.Store
+            
+
             );
 
             cmbProductName.SelectedIndex = -1;
-            nudQuantity.Value = 0;
+            nudQuantity.Value = nudQuantity.Minimum;
+
             txtUnit.Clear();
             txtPrice.Clear();
             cmbStore.SelectedIndex = -1;
+            UpdateTotals();
         }
 
 
@@ -193,9 +162,48 @@ namespace MENU
             }
         }
 
+        private void UpdateTotals()
+        {
+            double totalCalories = 0;
+            double totalBreadUnits = 0;
+            double totalPrice = 0;
+
+            foreach (DataGridViewRow row in dgvIngredients.Rows)
+            {
+                if (row.IsNewRow) continue;
+
+                totalCalories += Convert.ToDouble(row.Cells[3].Value);
+                totalBreadUnits += Convert.ToDouble(row.Cells[4].Value);
+
+                double pricePerUnit = Convert.ToDouble(row.Cells[5].Value);
+                double qty = Convert.ToDouble(row.Cells[1].Value);
+                totalPrice += pricePerUnit * qty;
+            }
+
+            lblTotalCalories.Text = $"Калорийность: {totalCalories:F2}";
+            lblTotalBreadUnits.Text = $"ХЕ: {totalBreadUnits:F2}";
+            lblTotalPrice.Text = $"Стоимость: {totalPrice:F2} ₽";
+        }
 
 
-        
+        private void txtName_TextChanged(object sender, EventArgs e)
+        {
 
+        }
+
+        private void txtVideo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTotalCalories_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTotalPrice_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

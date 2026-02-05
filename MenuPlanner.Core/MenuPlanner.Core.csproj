@@ -42,12 +42,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MenuService.cs" />
-    <Compile Include="Models\Models\DayMenu.cs" />
-    <Compile Include="Models\Models\IngredientItem.cs" />
-    <Compile Include="Models\Models\ProductItem.cs" />
-    <Compile Include="Models\Models\Recipe.cs" />
-    <Compile Include="Models\Models\RecipeIngredient.cs" />
-    <Compile Include="Models\Models\ShoppingCart.cs" />
+    <Compile Include="Models\DayMenu.cs" />
+    <Compile Include="Models\IngredientItem.cs" />
+    <Compile Include="Models\ProductItem.cs" />
+    <Compile Include="Models\Recipe.cs" />
+    <Compile Include="Models\RecipeIngredient.cs" />
+    <Compile Include="Models\ShoppingCart.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="ProductService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

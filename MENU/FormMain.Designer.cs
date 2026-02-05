@@ -36,6 +36,10 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnEditRecipe = new System.Windows.Forms.Button();
             this.lstRecipes = new System.Windows.Forms.ListBox();
+            this.btnDeleteRecipe = new System.Windows.Forms.Button();
+            this.lblTotalCalories = new System.Windows.Forms.Label();
+            this.lblTotalPrice = new System.Windows.Forms.Label();
+            this.lblTotalBreadUnits = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMenu)).BeginInit();
             this.SuspendLayout();
             // 
@@ -127,15 +131,60 @@
             this.lstRecipes.ItemHeight = 23;
             this.lstRecipes.Location = new System.Drawing.Point(228, 170);
             this.lstRecipes.Name = "lstRecipes";
-            this.lstRecipes.Size = new System.Drawing.Size(120, 96);
+            this.lstRecipes.Size = new System.Drawing.Size(268, 96);
             this.lstRecipes.TabIndex = 7;
-            this.lstRecipes.SelectedIndexChanged += new System.EventHandler(this.lstRecipes_SelectedIndexChanged);
+            // 
+            // btnDeleteRecipe
+            // 
+            this.btnDeleteRecipe.AutoSize = true;
+            this.btnDeleteRecipe.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnDeleteRecipe.Location = new System.Drawing.Point(10, 209);
+            this.btnDeleteRecipe.Name = "btnDeleteRecipe";
+            this.btnDeleteRecipe.Size = new System.Drawing.Size(143, 33);
+            this.btnDeleteRecipe.TabIndex = 8;
+            this.btnDeleteRecipe.Text = "Удалить рецепт";
+            this.btnDeleteRecipe.UseVisualStyleBackColor = true;
+            this.btnDeleteRecipe.Click += new System.EventHandler(this.btnDeleteRecipe_Click);
+            // 
+            // lblTotalCalories
+            // 
+            this.lblTotalCalories.AutoSize = true;
+            this.lblTotalCalories.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblTotalCalories.Location = new System.Drawing.Point(409, 6);
+            this.lblTotalCalories.Name = "lblTotalCalories";
+            this.lblTotalCalories.Size = new System.Drawing.Size(145, 23);
+            this.lblTotalCalories.TabIndex = 9;
+            this.lblTotalCalories.Text = "Калорийность : 0";
+            // 
+            // lblTotalPrice
+            // 
+            this.lblTotalPrice.AutoSize = true;
+            this.lblTotalPrice.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblTotalPrice.Location = new System.Drawing.Point(409, 52);
+            this.lblTotalPrice.Name = "lblTotalPrice";
+            this.lblTotalPrice.Size = new System.Drawing.Size(154, 23);
+            this.lblTotalPrice.TabIndex = 10;
+            this.lblTotalPrice.Text = "Стоимость : 0 руб.";
+            // 
+            // lblTotalBreadUnits
+            // 
+            this.lblTotalBreadUnits.AutoSize = true;
+            this.lblTotalBreadUnits.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblTotalBreadUnits.Location = new System.Drawing.Point(409, 29);
+            this.lblTotalBreadUnits.Name = "lblTotalBreadUnits";
+            this.lblTotalBreadUnits.Size = new System.Drawing.Size(87, 23);
+            this.lblTotalBreadUnits.TabIndex = 11;
+            this.lblTotalBreadUnits.Text = "X.E. : 0 ед.";
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(863, 609);
+            this.Controls.Add(this.lblTotalBreadUnits);
+            this.Controls.Add(this.lblTotalPrice);
+            this.Controls.Add(this.lblTotalCalories);
+            this.Controls.Add(this.btnDeleteRecipe);
             this.Controls.Add(this.lstRecipes);
             this.Controls.Add(this.btnEditRecipe);
             this.Controls.Add(this.btnSearch);
@@ -162,6 +211,10 @@
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnEditRecipe;
         private System.Windows.Forms.ListBox lstRecipes;
+        private System.Windows.Forms.Button btnDeleteRecipe;
+        private System.Windows.Forms.Label lblTotalCalories;
+        private System.Windows.Forms.Label lblTotalPrice;
+        private System.Windows.Forms.Label lblTotalBreadUnits;
     }
 }
 

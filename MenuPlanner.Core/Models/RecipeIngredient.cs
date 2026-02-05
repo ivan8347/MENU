@@ -13,14 +13,12 @@ namespace MenuPlanner.Core.Models
         public double Quantity { get; set; }
 
         public string Unit { get; set; }
-
-        public double CaloriesPerUnit { get; set; }
-
-        public double BreadUnitsPerUnit { get; set; }
-
         public double PricePerUnit { get; set; }
 
         public string Store { get; set; }
+        public double Calories { get; set; }
+
+        public double BreadUnits { get; set; }
     }
 }
 

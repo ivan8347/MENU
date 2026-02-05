@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtRecipeName = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
             this.lblProduct = new System.Windows.Forms.Label();
             this.lblInstruction = new System.Windows.Forms.Label();
-            this.chkFreezable = new System.Windows.Forms.CheckBox();
+            this.chkCanBeFrozen = new System.Windows.Forms.CheckBox();
             this.lblImagePath = new System.Windows.Forms.Label();
             this.btnChoosePhoto = new System.Windows.Forms.Button();
             this.txtVideo = new System.Windows.Forms.TextBox();
@@ -59,21 +59,25 @@
             this.lblRecipeName = new System.Windows.Forms.Label();
             this.picPhoto = new System.Windows.Forms.PictureBox();
             this.txtInstruction = new System.Windows.Forms.TextBox();
+            this.lblTotalCalories = new System.Windows.Forms.Label();
+            this.lblTotalBreadUnits = new System.Windows.Forms.Label();
+            this.lblTotalPrice = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIngredients)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPhoto)).BeginInit();
             this.SuspendLayout();
             // 
-            // txtRecipeName
+            // txtName
             // 
-            this.txtRecipeName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.txtRecipeName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.AllSystemSources;
-            this.txtRecipeName.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txtRecipeName.Location = new System.Drawing.Point(120, 8);
-            this.txtRecipeName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtRecipeName.Name = "txtRecipeName";
-            this.txtRecipeName.Size = new System.Drawing.Size(300, 30);
-            this.txtRecipeName.TabIndex = 0;
+            this.txtName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.AllSystemSources;
+            this.txtName.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txtName.Location = new System.Drawing.Point(120, 8);
+            this.txtName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(300, 30);
+            this.txtName.TabIndex = 0;
+            this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
             // 
             // lblProduct
             // 
@@ -95,17 +99,17 @@
             this.lblInstruction.TabIndex = 2;
             this.lblInstruction.Text = "Инструкция :";
             // 
-            // chkFreezable
+            // chkCanBeFrozen
             // 
-            this.chkFreezable.AutoSize = true;
-            this.chkFreezable.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.chkFreezable.Location = new System.Drawing.Point(120, 350);
-            this.chkFreezable.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.chkFreezable.Name = "chkFreezable";
-            this.chkFreezable.Size = new System.Drawing.Size(210, 27);
-            this.chkFreezable.TabIndex = 4;
-            this.chkFreezable.Text = "Можно замораживать";
-            this.chkFreezable.UseVisualStyleBackColor = true;
+            this.chkCanBeFrozen.AutoSize = true;
+            this.chkCanBeFrozen.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.chkCanBeFrozen.Location = new System.Drawing.Point(120, 350);
+            this.chkCanBeFrozen.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chkCanBeFrozen.Name = "chkCanBeFrozen";
+            this.chkCanBeFrozen.Size = new System.Drawing.Size(210, 27);
+            this.chkCanBeFrozen.TabIndex = 4;
+            this.chkCanBeFrozen.Text = "Можно замораживать";
+            this.chkCanBeFrozen.UseVisualStyleBackColor = true;
             // 
             // lblImagePath
             // 
@@ -137,6 +141,7 @@
             this.txtVideo.Name = "txtVideo";
             this.txtVideo.Size = new System.Drawing.Size(300, 30);
             this.txtVideo.TabIndex = 8;
+            this.txtVideo.TextChanged += new System.EventHandler(this.txtVideo_TextChanged);
             // 
             // lblVideo
             // 
@@ -273,6 +278,7 @@
             this.cmbProductName.Name = "cmbProductName";
             this.cmbProductName.Size = new System.Drawing.Size(300, 31);
             this.cmbProductName.TabIndex = 16;
+            this.cmbProductName.SelectedIndexChanged += new System.EventHandler(this.cmbProductName_SelectedIndexChanged);
             // 
             // nudQuantity
             // 
@@ -388,11 +394,43 @@
             this.txtInstruction.Size = new System.Drawing.Size(300, 120);
             this.txtInstruction.TabIndex = 26;
             // 
+            // lblTotalCalories
+            // 
+            this.lblTotalCalories.AutoSize = true;
+            this.lblTotalCalories.Location = new System.Drawing.Point(446, 285);
+            this.lblTotalCalories.Name = "lblTotalCalories";
+            this.lblTotalCalories.Size = new System.Drawing.Size(145, 23);
+            this.lblTotalCalories.TabIndex = 27;
+            this.lblTotalCalories.Text = "Калорийность : 0";
+            this.lblTotalCalories.Click += new System.EventHandler(this.lblTotalCalories_Click);
+            // 
+            // lblTotalBreadUnits
+            // 
+            this.lblTotalBreadUnits.AutoSize = true;
+            this.lblTotalBreadUnits.Location = new System.Drawing.Point(450, 317);
+            this.lblTotalBreadUnits.Name = "lblTotalBreadUnits";
+            this.lblTotalBreadUnits.Size = new System.Drawing.Size(84, 23);
+            this.lblTotalBreadUnits.TabIndex = 28;
+            this.lblTotalBreadUnits.Text = "ХЕ :  0 ед.";
+            // 
+            // lblTotalPrice
+            // 
+            this.lblTotalPrice.AutoSize = true;
+            this.lblTotalPrice.Location = new System.Drawing.Point(446, 350);
+            this.lblTotalPrice.Name = "lblTotalPrice";
+            this.lblTotalPrice.Size = new System.Drawing.Size(154, 23);
+            this.lblTotalPrice.TabIndex = 29;
+            this.lblTotalPrice.Text = "Стоимость : 0 руб.";
+            this.lblTotalPrice.Click += new System.EventHandler(this.lblTotalPrice_Click);
+            // 
             // RecipeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(888, 963);
+            this.Controls.Add(this.lblTotalPrice);
+            this.Controls.Add(this.lblTotalBreadUnits);
+            this.Controls.Add(this.lblTotalCalories);
             this.Controls.Add(this.txtInstruction);
             this.Controls.Add(this.picPhoto);
             this.Controls.Add(this.lblRecipeName);
@@ -413,10 +451,10 @@
             this.Controls.Add(this.txtVideo);
             this.Controls.Add(this.btnChoosePhoto);
             this.Controls.Add(this.lblImagePath);
-            this.Controls.Add(this.chkFreezable);
+            this.Controls.Add(this.chkCanBeFrozen);
             this.Controls.Add(this.lblInstruction);
             this.Controls.Add(this.lblProduct);
-            this.Controls.Add(this.txtRecipeName);
+            this.Controls.Add(this.txtName);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "RecipeForm";
@@ -431,11 +469,11 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtRecipeName;
+        private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label lblProduct;
         private System.Windows.Forms.Label lblInstruction;
         private System.Windows.Forms.TextBox txtInstructions;
-        private System.Windows.Forms.CheckBox chkFreezable;
+        private System.Windows.Forms.CheckBox chkCanBeFrozen;
         private System.Windows.Forms.Label lblImagePath;
         private System.Windows.Forms.Button btnChoosePhoto;
         private System.Windows.Forms.TextBox txtVideo;
@@ -463,5 +501,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colBreadUnits;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStore;
+        private System.Windows.Forms.Label lblTotalCalories;
+        private System.Windows.Forms.Label lblTotalBreadUnits;
+        private System.Windows.Forms.Label lblTotalPrice;
     }
 }

@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-using MenuPlanner.Core.Models;
 using MenuPlanner.Core;
-using System.Xml.Linq;
+using MenuPlanner.Core.Models;
 
 
 
@@ -21,12 +19,16 @@ namespace MENU
         {
             InitializeComponent();
             cmbProductName.DataSource = ProductService.Instance.Products;
+            cmbCategory.DataSource = CategoryService.Instance.Categories;
+            LoadProducts();
+
 
         }
         public RecipeForm(Recipe recipe)
         {
             InitializeComponent();
-            cmbProductName.DataSource = ProductService.Instance.Products; 
+            cmbProductName.DataSource = ProductService.Instance.Products;
+            cmbCategory.DataSource = CategoryService.Instance.Categories;
             _recipeToEdit = recipe;
             LoadRecipeData();
         }
@@ -47,6 +49,7 @@ namespace MENU
             txtName.Text = _recipeToEdit.Name;
             txtInstruction.Text = _recipeToEdit.Instruction;
             chkCanBeFrozen.Checked = _recipeToEdit.CanBeFrozen;
+            cmbCategory.SelectedItem = _recipeToEdit.Category;
 
             if (!string.IsNullOrEmpty(_recipeToEdit.PhotoPath) && File.Exists(_recipeToEdit.PhotoPath))
             {
@@ -98,7 +101,7 @@ namespace MENU
                 totalBreadUnits,
                 product.PricePerUnit,
                 product.Store
-            
+
 
             );
 
@@ -123,6 +126,8 @@ namespace MENU
             recipe.CanBeFrozen = chkCanBeFrozen.Checked;
             recipe.PhotoPath = _photoPath;
             recipe.VideoPath = txtVideo.Text;
+            recipe.Category = cmbCategory.SelectedItem?.ToString();
+
 
             recipe.Ingredients.Clear();
 
@@ -205,5 +210,12 @@ namespace MENU
         {
 
         }
+        private void LoadProducts()
+        {
+            cmbProductName.DataSource = null;
+            cmbProductName.DataSource = ProductService.Instance.Products;
+            cmbProductName.DisplayMember = "Name";
+        }
+
     }
 }

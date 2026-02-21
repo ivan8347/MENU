@@ -12,6 +12,8 @@ namespace MenuPlanner.Core.Models
 
         public string PhotoPath { get; set; }
         public string Instruction { get; set; }
+        public string Category { get; set; }
+
 
         public bool CanBeFrozen { get; set; }
         public string VideoPath { get; set; }

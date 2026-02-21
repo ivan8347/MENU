@@ -40,6 +40,8 @@
             this.lblTotalCalories = new System.Windows.Forms.Label();
             this.lblTotalPrice = new System.Windows.Forms.Label();
             this.lblTotalBreadUnits = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbFilterCategory = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMenu)).BeginInit();
             this.SuspendLayout();
             // 
@@ -150,17 +152,17 @@
             // 
             this.lblTotalCalories.AutoSize = true;
             this.lblTotalCalories.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblTotalCalories.Location = new System.Drawing.Point(409, 6);
+            this.lblTotalCalories.Location = new System.Drawing.Point(513, 209);
             this.lblTotalCalories.Name = "lblTotalCalories";
-            this.lblTotalCalories.Size = new System.Drawing.Size(145, 23);
+            this.lblTotalCalories.Size = new System.Drawing.Size(186, 23);
             this.lblTotalCalories.TabIndex = 9;
-            this.lblTotalCalories.Text = "Калорийность : 0";
+            this.lblTotalCalories.Text = "Калорийность : 0 кКал";
             // 
             // lblTotalPrice
             // 
             this.lblTotalPrice.AutoSize = true;
             this.lblTotalPrice.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblTotalPrice.Location = new System.Drawing.Point(409, 52);
+            this.lblTotalPrice.Location = new System.Drawing.Point(513, 243);
             this.lblTotalPrice.Name = "lblTotalPrice";
             this.lblTotalPrice.Size = new System.Drawing.Size(154, 23);
             this.lblTotalPrice.TabIndex = 10;
@@ -170,17 +172,40 @@
             // 
             this.lblTotalBreadUnits.AutoSize = true;
             this.lblTotalBreadUnits.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblTotalBreadUnits.Location = new System.Drawing.Point(409, 29);
+            this.lblTotalBreadUnits.Location = new System.Drawing.Point(731, 209);
             this.lblTotalBreadUnits.Name = "lblTotalBreadUnits";
             this.lblTotalBreadUnits.Size = new System.Drawing.Size(87, 23);
             this.lblTotalBreadUnits.TabIndex = 11;
             this.lblTotalBreadUnits.Text = "X.E. : 0 ед.";
+            this.lblTotalBreadUnits.Click += new System.EventHandler(this.lblTotalBreadUnits_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(392, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(91, 23);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Категория";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // cmbFilterCategory
+            // 
+            this.cmbFilterCategory.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cmbFilterCategory.FormattingEnabled = true;
+            this.cmbFilterCategory.Location = new System.Drawing.Point(517, 10);
+            this.cmbFilterCategory.Name = "cmbFilterCategory";
+            this.cmbFilterCategory.Size = new System.Drawing.Size(182, 31);
+            this.cmbFilterCategory.TabIndex = 13;
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(863, 609);
+            this.Controls.Add(this.cmbFilterCategory);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblTotalBreadUnits);
             this.Controls.Add(this.lblTotalPrice);
             this.Controls.Add(this.lblTotalCalories);
@@ -215,6 +240,8 @@
         private System.Windows.Forms.Label lblTotalCalories;
         private System.Windows.Forms.Label lblTotalPrice;
         private System.Windows.Forms.Label lblTotalBreadUnits;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cmbFilterCategory;
     }
 }
 

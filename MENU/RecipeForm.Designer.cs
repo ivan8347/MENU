@@ -62,6 +62,8 @@
             this.lblTotalCalories = new System.Windows.Forms.Label();
             this.lblTotalBreadUnits = new System.Windows.Forms.Label();
             this.lblTotalPrice = new System.Windows.Forms.Label();
+            this.cmbCategory = new System.Windows.Forms.ComboBox();
+            this.lblCategory = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIngredients)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPhoto)).BeginInit();
@@ -397,17 +399,17 @@
             // lblTotalCalories
             // 
             this.lblTotalCalories.AutoSize = true;
-            this.lblTotalCalories.Location = new System.Drawing.Point(446, 285);
+            this.lblTotalCalories.Location = new System.Drawing.Point(446, 317);
             this.lblTotalCalories.Name = "lblTotalCalories";
-            this.lblTotalCalories.Size = new System.Drawing.Size(145, 23);
+            this.lblTotalCalories.Size = new System.Drawing.Size(186, 23);
             this.lblTotalCalories.TabIndex = 27;
-            this.lblTotalCalories.Text = "Калорийность : 0";
+            this.lblTotalCalories.Text = "Калорийность : 0 кКал";
             this.lblTotalCalories.Click += new System.EventHandler(this.lblTotalCalories_Click);
             // 
             // lblTotalBreadUnits
             // 
             this.lblTotalBreadUnits.AutoSize = true;
-            this.lblTotalBreadUnits.Location = new System.Drawing.Point(450, 317);
+            this.lblTotalBreadUnits.Location = new System.Drawing.Point(679, 317);
             this.lblTotalBreadUnits.Name = "lblTotalBreadUnits";
             this.lblTotalBreadUnits.Size = new System.Drawing.Size(84, 23);
             this.lblTotalBreadUnits.TabIndex = 28;
@@ -416,18 +418,37 @@
             // lblTotalPrice
             // 
             this.lblTotalPrice.AutoSize = true;
-            this.lblTotalPrice.Location = new System.Drawing.Point(446, 350);
+            this.lblTotalPrice.Location = new System.Drawing.Point(450, 354);
             this.lblTotalPrice.Name = "lblTotalPrice";
             this.lblTotalPrice.Size = new System.Drawing.Size(154, 23);
             this.lblTotalPrice.TabIndex = 29;
             this.lblTotalPrice.Text = "Стоимость : 0 руб.";
             this.lblTotalPrice.Click += new System.EventHandler(this.lblTotalPrice_Click);
             // 
+            // cmbCategory
+            // 
+            this.cmbCategory.FormattingEnabled = true;
+            this.cmbCategory.Location = new System.Drawing.Point(560, 178);
+            this.cmbCategory.Name = "cmbCategory";
+            this.cmbCategory.Size = new System.Drawing.Size(188, 31);
+            this.cmbCategory.TabIndex = 30;
+            // 
+            // lblCategory
+            // 
+            this.lblCategory.AutoSize = true;
+            this.lblCategory.Location = new System.Drawing.Point(450, 181);
+            this.lblCategory.Name = "lblCategory";
+            this.lblCategory.Size = new System.Drawing.Size(91, 23);
+            this.lblCategory.TabIndex = 31;
+            this.lblCategory.Text = "Категория";
+            // 
             // RecipeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(888, 963);
+            this.Controls.Add(this.lblCategory);
+            this.Controls.Add(this.cmbCategory);
             this.Controls.Add(this.lblTotalPrice);
             this.Controls.Add(this.lblTotalBreadUnits);
             this.Controls.Add(this.lblTotalCalories);
@@ -504,5 +525,9 @@
         private System.Windows.Forms.Label lblTotalCalories;
         private System.Windows.Forms.Label lblTotalBreadUnits;
         private System.Windows.Forms.Label lblTotalPrice;
+        private System.Windows.Forms.ComboBox cmbCategory;
+        private System.Windows.Forms.Label lblCategory;
+
+
     }
 }

@@ -125,9 +125,9 @@ namespace MENU
         {
             if (lstRecipes.SelectedItem is Recipe recipe)
             {
-                lblTotalCalories.Text = $"Калорийность: {recipe.TotalCalories:F2} кКал";
-                lblTotalBreadUnits.Text = $"ХЕ: {recipe.TotalBreadUnits:F2} ед.";
-                lblTotalPrice.Text = $"Стоимость: {recipe.TotalPrice:F2} руб.";
+                lblTotalCalories.Text = $"Калорийность: {recipe.TotalCalories:F2} кКал/100г.";
+                lblTotalBreadUnits.Text = $"ХЕ: {recipe.TotalBreadUnits:F2} ед/100г.";
+                lblTotalPrice.Text = $"Стоимость: {recipe.TotalPrice:F2} руб/кг.";
 
                 UpdateColorIndicators(recipe);
             }

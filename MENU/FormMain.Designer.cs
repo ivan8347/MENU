@@ -152,11 +152,11 @@
             // 
             this.lblTotalCalories.AutoSize = true;
             this.lblTotalCalories.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblTotalCalories.Location = new System.Drawing.Point(513, 209);
+            this.lblTotalCalories.Location = new System.Drawing.Point(513, 180);
             this.lblTotalCalories.Name = "lblTotalCalories";
-            this.lblTotalCalories.Size = new System.Drawing.Size(186, 23);
+            this.lblTotalCalories.Size = new System.Drawing.Size(231, 23);
             this.lblTotalCalories.TabIndex = 9;
-            this.lblTotalCalories.Text = "Калорийность : 0 кКал";
+            this.lblTotalCalories.Text = "Калорийность : 0 кКал/100г.";
             // 
             // lblTotalPrice
             // 
@@ -164,19 +164,19 @@
             this.lblTotalPrice.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblTotalPrice.Location = new System.Drawing.Point(513, 243);
             this.lblTotalPrice.Name = "lblTotalPrice";
-            this.lblTotalPrice.Size = new System.Drawing.Size(154, 23);
+            this.lblTotalPrice.Size = new System.Drawing.Size(176, 23);
             this.lblTotalPrice.TabIndex = 10;
-            this.lblTotalPrice.Text = "Стоимость : 0 руб.";
+            this.lblTotalPrice.Text = "Стоимость : 0 руб/кг.";
             // 
             // lblTotalBreadUnits
             // 
             this.lblTotalBreadUnits.AutoSize = true;
             this.lblTotalBreadUnits.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblTotalBreadUnits.Location = new System.Drawing.Point(731, 209);
+            this.lblTotalBreadUnits.Location = new System.Drawing.Point(513, 214);
             this.lblTotalBreadUnits.Name = "lblTotalBreadUnits";
-            this.lblTotalBreadUnits.Size = new System.Drawing.Size(87, 23);
+            this.lblTotalBreadUnits.Size = new System.Drawing.Size(128, 23);
             this.lblTotalBreadUnits.TabIndex = 11;
-            this.lblTotalBreadUnits.Text = "X.E. : 0 ед.";
+            this.lblTotalBreadUnits.Text = "X.E. : 0 ед/100г.";
             this.lblTotalBreadUnits.Click += new System.EventHandler(this.lblTotalBreadUnits_Click);
             // 
             // label1

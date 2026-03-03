@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -14,21 +15,29 @@ namespace MENU
     {
         private Recipe _recipeToEdit;
         private string _photoPath;
+        private List<Product> products;
 
         public RecipeForm()
         {
             InitializeComponent();
-            cmbProductName.DataSource = ProductService.Instance.Products;
+            products = ProductStorage.Load();
+            cmbProductName.DataSource = products;
+            cmbProductName.DisplayMember = "Name"; 
             cmbCategory.DataSource = CategoryService.Instance.Categories;
-            LoadProducts();
+
 
 
         }
         public RecipeForm(Recipe recipe)
         {
             InitializeComponent();
-            cmbProductName.DataSource = ProductService.Instance.Products;
+
+            products = ProductStorage.Load();
+            cmbProductName.DataSource = products;
+            cmbProductName.DisplayMember = "Name";
+
             cmbCategory.DataSource = CategoryService.Instance.Categories;
+
             _recipeToEdit = recipe;
             LoadRecipeData();
         }
@@ -39,11 +48,11 @@ namespace MENU
         {
             if (cmbProductName.SelectedItem is Product product)
             {
-                txtUnit.Text = product.Unit;
-                txtPrice.Text = product.PricePerUnit.ToString();
-                cmbStore.SelectedItem = product.Store;
+                lblTotalCalories.Text = $"Калорийность: {product.CaloriesPerUnit} кКал/100";
+                lblTotalBreadUnits.Text = $"ХЕ: {product.BreadUnitsPerUnit} ед/100";
             }
         }
+
         private void LoadRecipeData()
         {
             txtName.Text = _recipeToEdit.Name;
@@ -88,34 +97,44 @@ namespace MENU
             }
 
             var product = (Product)cmbProductName.SelectedItem;
-            double qty = (double)nudQuantity.Value;
 
-            double totalCalories = product.CaloriesPerUnit * qty;
-            double totalBreadUnits = product.BreadUnitsPerUnit * qty;
+            // Количество вручную
+            if (!double.TryParse(txtQuantity.Text, out double qty))
+            {
+                MessageBox.Show("Введите корректное количество.");
+                return;
+            }
+
+            string unit = txtUnit.Text;
+
+            // Цена вручную
+            double price = double.TryParse(txtPrice.Text, out double p) ? p : 0;
+
+            string store = cmbStore.Text;
+
+            double totalCalories = (product.CaloriesPerUnit / 100.0) * qty;
+            double totalBreadUnits = (product.BreadUnitsPerUnit / 100.0) * qty;
+
 
             dgvIngredients.Rows.Add(
                 product.Name,
                 qty,
-                product.Unit,
+                unit,
                 totalCalories,
                 totalBreadUnits,
-                product.PricePerUnit,
-                product.Store
-
-
+                price,
+                store
             );
 
+            // Очистка полей
             cmbProductName.SelectedIndex = -1;
-            nudQuantity.Value = nudQuantity.Minimum;
-
+            txtQuantity.Clear();
             txtUnit.Clear();
             txtPrice.Clear();
             cmbStore.SelectedIndex = -1;
+
             UpdateTotals();
         }
-
-
-
 
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -210,12 +229,7 @@ namespace MENU
         {
 
         }
-        private void LoadProducts()
-        {
-            cmbProductName.DataSource = null;
-            cmbProductName.DataSource = ProductService.Instance.Products;
-            cmbProductName.DisplayMember = "Name";
-        }
+       
 
     }
 }

@@ -49,7 +49,6 @@
             this.btnRemoveIngredient = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.cmbProductName = new System.Windows.Forms.ComboBox();
-            this.nudQuantity = new System.Windows.Forms.NumericUpDown();
             this.lblQuantity = new System.Windows.Forms.Label();
             this.lblPrice = new System.Windows.Forms.Label();
             this.lblStore = new System.Windows.Forms.Label();
@@ -64,8 +63,8 @@
             this.lblTotalPrice = new System.Windows.Forms.Label();
             this.cmbCategory = new System.Windows.Forms.ComboBox();
             this.lblCategory = new System.Windows.Forms.Label();
+            this.txtQuantity = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIngredients)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudQuantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPhoto)).BeginInit();
             this.SuspendLayout();
             // 
@@ -282,31 +281,6 @@
             this.cmbProductName.TabIndex = 16;
             this.cmbProductName.SelectedIndexChanged += new System.EventHandler(this.cmbProductName_SelectedIndexChanged);
             // 
-            // nudQuantity
-            // 
-            this.nudQuantity.DecimalPlaces = 2;
-            this.nudQuantity.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.nudQuantity.Location = new System.Drawing.Point(560, 48);
-            this.nudQuantity.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.nudQuantity.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.nudQuantity.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.nudQuantity.Name = "nudQuantity";
-            this.nudQuantity.Size = new System.Drawing.Size(90, 30);
-            this.nudQuantity.TabIndex = 17;
-            this.nudQuantity.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            // 
             // lblQuantity
             // 
             this.lblQuantity.AutoSize = true;
@@ -361,7 +335,6 @@
             this.txtUnit.Location = new System.Drawing.Point(740, 48);
             this.txtUnit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtUnit.Name = "txtUnit";
-            this.txtUnit.ReadOnly = true;
             this.txtUnit.Size = new System.Drawing.Size(80, 30);
             this.txtUnit.TabIndex = 23;
             // 
@@ -399,21 +372,21 @@
             // lblTotalCalories
             // 
             this.lblTotalCalories.AutoSize = true;
-            this.lblTotalCalories.Location = new System.Drawing.Point(446, 317);
+            this.lblTotalCalories.Location = new System.Drawing.Point(450, 273);
             this.lblTotalCalories.Name = "lblTotalCalories";
-            this.lblTotalCalories.Size = new System.Drawing.Size(186, 23);
+            this.lblTotalCalories.Size = new System.Drawing.Size(231, 23);
             this.lblTotalCalories.TabIndex = 27;
-            this.lblTotalCalories.Text = "Калорийность : 0 кКал";
+            this.lblTotalCalories.Text = "Калорийность : 0 кКал/100г.";
             this.lblTotalCalories.Click += new System.EventHandler(this.lblTotalCalories_Click);
             // 
             // lblTotalBreadUnits
             // 
             this.lblTotalBreadUnits.AutoSize = true;
-            this.lblTotalBreadUnits.Location = new System.Drawing.Point(679, 317);
+            this.lblTotalBreadUnits.Location = new System.Drawing.Point(450, 317);
             this.lblTotalBreadUnits.Name = "lblTotalBreadUnits";
-            this.lblTotalBreadUnits.Size = new System.Drawing.Size(84, 23);
+            this.lblTotalBreadUnits.Size = new System.Drawing.Size(125, 23);
             this.lblTotalBreadUnits.TabIndex = 28;
-            this.lblTotalBreadUnits.Text = "ХЕ :  0 ед.";
+            this.lblTotalBreadUnits.Text = "ХЕ :  0 ед/100г.";
             // 
             // lblTotalPrice
             // 
@@ -442,11 +415,20 @@
             this.lblCategory.TabIndex = 31;
             this.lblCategory.Text = "Категория";
             // 
+            // txtQuantity
+            // 
+            this.txtQuantity.Location = new System.Drawing.Point(560, 48);
+            this.txtQuantity.MaxLength = 10;
+            this.txtQuantity.Name = "txtQuantity";
+            this.txtQuantity.Size = new System.Drawing.Size(80, 30);
+            this.txtQuantity.TabIndex = 32;
+            // 
             // RecipeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(888, 963);
+            this.Controls.Add(this.txtQuantity);
             this.Controls.Add(this.lblCategory);
             this.Controls.Add(this.cmbCategory);
             this.Controls.Add(this.lblTotalPrice);
@@ -461,7 +443,6 @@
             this.Controls.Add(this.lblStore);
             this.Controls.Add(this.lblPrice);
             this.Controls.Add(this.lblQuantity);
-            this.Controls.Add(this.nudQuantity);
             this.Controls.Add(this.cmbProductName);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnRemoveIngredient);
@@ -481,7 +462,6 @@
             this.Name = "RecipeForm";
             this.Text = "RecipeForm";
             ((System.ComponentModel.ISupportInitialize)(this.dgvIngredients)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudQuantity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPhoto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -505,7 +485,6 @@
         private System.Windows.Forms.Button btnRemoveIngredient;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.ComboBox cmbProductName;
-        private System.Windows.Forms.NumericUpDown nudQuantity;
         private System.Windows.Forms.Label lblQuantity;
         private System.Windows.Forms.Label lblPrice;
         private System.Windows.Forms.Label lblStore;
@@ -527,7 +506,6 @@
         private System.Windows.Forms.Label lblTotalPrice;
         private System.Windows.Forms.ComboBox cmbCategory;
         private System.Windows.Forms.Label lblCategory;
-
-
+        private System.Windows.Forms.TextBox txtQuantity;
     }
 }

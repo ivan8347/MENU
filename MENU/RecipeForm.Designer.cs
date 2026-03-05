@@ -79,7 +79,6 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(300, 30);
             this.txtName.TabIndex = 0;
-            this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
             // 
             // lblProduct
             // 
@@ -143,7 +142,6 @@
             this.txtVideo.Name = "txtVideo";
             this.txtVideo.Size = new System.Drawing.Size(300, 30);
             this.txtVideo.TabIndex = 8;
-            this.txtVideo.TextChanged += new System.EventHandler(this.txtVideo_TextChanged);
             // 
             // lblVideo
             // 
@@ -154,6 +152,7 @@
             this.lblVideo.Size = new System.Drawing.Size(67, 23);
             this.lblVideo.TabIndex = 9;
             this.lblVideo.Text = "Видео :";
+            this.lblVideo.Click += new System.EventHandler(this.lblVideo_Click);
             // 
             // dgvIngredients
             // 
@@ -280,7 +279,6 @@
             this.cmbProductName.Name = "cmbProductName";
             this.cmbProductName.Size = new System.Drawing.Size(300, 31);
             this.cmbProductName.TabIndex = 16;
-            this.cmbProductName.SelectedIndexChanged += new System.EventHandler(this.cmbProductName_SelectedIndexChanged);
             // 
             // lblQuantity
             // 
@@ -378,7 +376,6 @@
             this.lblTotalCalories.Size = new System.Drawing.Size(231, 23);
             this.lblTotalCalories.TabIndex = 27;
             this.lblTotalCalories.Text = "Калорийность : 0 кКал/100г.";
-            this.lblTotalCalories.Click += new System.EventHandler(this.lblTotalCalories_Click);
             // 
             // lblTotalBreadUnits
             // 
@@ -397,7 +394,6 @@
             this.lblTotalPrice.Size = new System.Drawing.Size(154, 23);
             this.lblTotalPrice.TabIndex = 29;
             this.lblTotalPrice.Text = "Стоимость : 0 руб.";
-            this.lblTotalPrice.Click += new System.EventHandler(this.lblTotalPrice_Click);
             // 
             // cmbCategory
             // 

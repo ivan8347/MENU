@@ -53,6 +53,7 @@
     <Compile Include="Models\RecipeIngredient.cs" />
     <Compile Include="Models\ShoppingCart.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\YouTubeVideoInfo.cs" />
     <Compile Include="ProductStorage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

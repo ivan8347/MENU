@@ -56,6 +56,9 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="ImageExtensions.cs" />
+    <Compile Include="IngredientParserService.cs" />
+    <Compile Include="ProductService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecipeForm.cs">
@@ -64,6 +67,7 @@
     <Compile Include="RecipeForm.Designer.cs">
       <DependentUpon>RecipeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="YouTubeService.cs" />
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>

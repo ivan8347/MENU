@@ -64,6 +64,7 @@
             this.cmbCategory = new System.Windows.Forms.ComboBox();
             this.lblCategory = new System.Windows.Forms.Label();
             this.txtQuantity = new System.Windows.Forms.TextBox();
+            this.btnParseInstruction = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIngredients)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPhoto)).BeginInit();
             this.SuspendLayout();
@@ -237,7 +238,7 @@
             // btnAddIngredient
             // 
             this.btnAddIngredient.AutoSize = true;
-            this.btnAddIngredient.Location = new System.Drawing.Point(450, 130);
+            this.btnAddIngredient.Location = new System.Drawing.Point(454, 126);
             this.btnAddIngredient.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAddIngredient.Name = "btnAddIngredient";
             this.btnAddIngredient.Size = new System.Drawing.Size(200, 33);
@@ -249,7 +250,7 @@
             // btnRemoveIngredient
             // 
             this.btnRemoveIngredient.AutoSize = true;
-            this.btnRemoveIngredient.Location = new System.Drawing.Point(670, 130);
+            this.btnRemoveIngredient.Location = new System.Drawing.Point(670, 126);
             this.btnRemoveIngredient.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnRemoveIngredient.Name = "btnRemoveIngredient";
             this.btnRemoveIngredient.Size = new System.Drawing.Size(200, 33);
@@ -401,7 +402,7 @@
             // cmbCategory
             // 
             this.cmbCategory.FormattingEnabled = true;
-            this.cmbCategory.Location = new System.Drawing.Point(560, 178);
+            this.cmbCategory.Location = new System.Drawing.Point(560, 234);
             this.cmbCategory.Name = "cmbCategory";
             this.cmbCategory.Size = new System.Drawing.Size(188, 31);
             this.cmbCategory.TabIndex = 30;
@@ -409,7 +410,7 @@
             // lblCategory
             // 
             this.lblCategory.AutoSize = true;
-            this.lblCategory.Location = new System.Drawing.Point(450, 181);
+            this.lblCategory.Location = new System.Drawing.Point(454, 234);
             this.lblCategory.Name = "lblCategory";
             this.lblCategory.Size = new System.Drawing.Size(91, 23);
             this.lblCategory.TabIndex = 31;
@@ -423,11 +424,24 @@
             this.txtQuantity.Size = new System.Drawing.Size(80, 30);
             this.txtQuantity.TabIndex = 32;
             // 
+            // btnParseInstruction
+            // 
+            this.btnParseInstruction.AutoSize = true;
+            this.btnParseInstruction.Location = new System.Drawing.Point(454, 170);
+            this.btnParseInstruction.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnParseInstruction.Name = "btnParseInstruction";
+            this.btnParseInstruction.Size = new System.Drawing.Size(311, 33);
+            this.btnParseInstruction.TabIndex = 33;
+            this.btnParseInstruction.Text = "Добавить ингредиент из инструкции";
+            this.btnParseInstruction.UseVisualStyleBackColor = true;
+            this.btnParseInstruction.Click += new System.EventHandler(this.btnParseInstruction_Click);
+            // 
             // RecipeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(888, 963);
+            this.Controls.Add(this.btnParseInstruction);
             this.Controls.Add(this.txtQuantity);
             this.Controls.Add(this.lblCategory);
             this.Controls.Add(this.cmbCategory);
@@ -461,6 +475,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "RecipeForm";
             this.Text = "RecipeForm";
+            this.Load += new System.EventHandler(this.RecipeForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvIngredients)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPhoto)).EndInit();
             this.ResumeLayout(false);
@@ -507,5 +522,6 @@
         private System.Windows.Forms.ComboBox cmbCategory;
         private System.Windows.Forms.Label lblCategory;
         private System.Windows.Forms.TextBox txtQuantity;
+        private System.Windows.Forms.Button btnParseInstruction;
     }
 }

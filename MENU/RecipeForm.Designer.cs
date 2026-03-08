@@ -104,7 +104,7 @@
             // 
             this.chkCanBeFrozen.AutoSize = true;
             this.chkCanBeFrozen.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.chkCanBeFrozen.Location = new System.Drawing.Point(120, 350);
+            this.chkCanBeFrozen.Location = new System.Drawing.Point(14, 247);
             this.chkCanBeFrozen.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chkCanBeFrozen.Name = "chkCanBeFrozen";
             this.chkCanBeFrozen.Size = new System.Drawing.Size(210, 27);
@@ -167,63 +167,78 @@
             this.colBreadUnits,
             this.colPrice,
             this.colStore});
-            this.dgvIngredients.Location = new System.Drawing.Point(10, 390);
+            this.dgvIngredients.Location = new System.Drawing.Point(264, 398);
             this.dgvIngredients.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgvIngredients.Name = "dgvIngredients";
             this.dgvIngredients.ReadOnly = true;
+            this.dgvIngredients.RowHeadersVisible = false;
             this.dgvIngredients.RowHeadersWidth = 51;
             this.dgvIngredients.RowTemplate.Height = 24;
-            this.dgvIngredients.Size = new System.Drawing.Size(860, 250);
+            this.dgvIngredients.Size = new System.Drawing.Size(621, 250);
             this.dgvIngredients.TabIndex = 10;
             // 
             // colName
             // 
+            this.colName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.colName.HeaderText = "Название";
             this.colName.MinimumWidth = 6;
             this.colName.Name = "colName";
             this.colName.ReadOnly = true;
+            this.colName.Width = 125;
             // 
             // colQty
             // 
+            this.colQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.colQty.HeaderText = "Кол-во";
             this.colQty.MinimumWidth = 6;
             this.colQty.Name = "colQty";
             this.colQty.ReadOnly = true;
+            this.colQty.Width = 80;
             // 
             // colUnit
             // 
+            this.colUnit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.colUnit.HeaderText = "Ед.изм.";
             this.colUnit.MinimumWidth = 6;
             this.colUnit.Name = "colUnit";
             this.colUnit.ReadOnly = true;
+            this.colUnit.Width = 70;
             // 
             // colCalories
             // 
-            this.colCalories.HeaderText = "Кал/ед";
+            this.colCalories.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.colCalories.HeaderText = "Кал/100";
             this.colCalories.MinimumWidth = 6;
             this.colCalories.Name = "colCalories";
             this.colCalories.ReadOnly = true;
+            this.colCalories.Width = 80;
             // 
             // colBreadUnits
             // 
-            this.colBreadUnits.HeaderText = "Хе/ед";
+            this.colBreadUnits.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.colBreadUnits.HeaderText = "Хе/100";
             this.colBreadUnits.MinimumWidth = 6;
             this.colBreadUnits.Name = "colBreadUnits";
             this.colBreadUnits.ReadOnly = true;
+            this.colBreadUnits.Width = 70;
             // 
             // colPrice
             // 
-            this.colPrice.HeaderText = "Цена/ед.";
+            this.colPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.colPrice.HeaderText = "Цена";
             this.colPrice.MinimumWidth = 6;
             this.colPrice.Name = "colPrice";
             this.colPrice.ReadOnly = true;
+            this.colPrice.Width = 90;
             // 
             // colStore
             // 
+            this.colStore.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.colStore.HeaderText = "Магазин";
             this.colStore.MinimumWidth = 6;
             this.colStore.Name = "colStore";
             this.colStore.ReadOnly = true;
+            this.colStore.Width = 125;
             // 
             // cmbStore
             // 
@@ -360,12 +375,12 @@
             // txtInstruction
             // 
             this.txtInstruction.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txtInstruction.Location = new System.Drawing.Point(120, 220);
+            this.txtInstruction.Location = new System.Drawing.Point(14, 288);
             this.txtInstruction.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtInstruction.Multiline = true;
             this.txtInstruction.Name = "txtInstruction";
             this.txtInstruction.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtInstruction.Size = new System.Drawing.Size(300, 120);
+            this.txtInstruction.Size = new System.Drawing.Size(244, 360);
             this.txtInstruction.TabIndex = 26;
             // 
             // lblTotalCalories
@@ -423,7 +438,7 @@
             // btnParseInstruction
             // 
             this.btnParseInstruction.AutoSize = true;
-            this.btnParseInstruction.Location = new System.Drawing.Point(454, 170);
+            this.btnParseInstruction.Location = new System.Drawing.Point(120, 215);
             this.btnParseInstruction.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnParseInstruction.Name = "btnParseInstruction";
             this.btnParseInstruction.Size = new System.Drawing.Size(311, 33);
@@ -505,13 +520,6 @@
         private System.Windows.Forms.Label lblRecipeName;
         private System.Windows.Forms.PictureBox picPhoto;
         private System.Windows.Forms.TextBox txtInstruction;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colQty;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colUnit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCalories;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colBreadUnits;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colStore;
         private System.Windows.Forms.Label lblTotalCalories;
         private System.Windows.Forms.Label lblTotalBreadUnits;
         private System.Windows.Forms.Label lblTotalPrice;
@@ -519,5 +527,12 @@
         private System.Windows.Forms.Label lblCategory;
         private System.Windows.Forms.TextBox txtQuantity;
         private System.Windows.Forms.Button btnParseInstruction;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colQty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colUnit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCalories;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colBreadUnits;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colStore;
     }
 }

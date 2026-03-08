@@ -13,7 +13,7 @@ namespace MenuPlanner.Core.Models
         public string Unit { get; set; }                 // г, мл, шт, ложки, стаканы
         public double CaloriesPerUnit { get; set; }
         public double BreadUnitsPerUnit { get; set; }
-        public double PricePerUnit { get; set; }
+        public double Price { get; set; }
         public string Store { get; set; }
 
         public double ConvertToBaseUnit(double qty)
@@ -24,7 +24,7 @@ namespace MenuPlanner.Core.Models
             if (Unit == "ст.л")
                 return qty * 15;     // 15 мл
 
-            if (Unit == "ст")
+            if (Unit == "стакан")
                 return qty * 200;    // 200 мл
 
             return qty;              // г, мл, шт — без изменений

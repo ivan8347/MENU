@@ -23,36 +23,45 @@ namespace MENU
                 return result;
 
             var regex = new Regex(
-                @"(.+?)\s*[-–—:]\s*([\d¼½¾⅐⅑⅒⅓⅔⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞]+)\s*(г|гр|мл|шт|ст\.л\.|ч\.л\.|стакан)",
+                @"(.+?)\s*[-–—:]\s*([\d¼½¾⅐⅑⅒⅓⅔⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞]+|щепотка|щепотки|по вкусу|немного|чуть-чуть|капля|капли|кусочек|пакетик)\s*(г|гр|кг|мл|шт|ст\.л\.?|ч\.л\.?|стакан|щепотка)?",
                 RegexOptions.IgnoreCase);
+
+
 
             var lines = text.Split('\n');
 
-            foreach (var line in lines)
-            {
-                var match = regex.Match(line.Trim());
-                if (!match.Success)
-                    continue;
+           foreach (var line in lines)
+{
+    var match = regex.Match(line.Trim());
+    if (!match.Success)
+        continue;
 
-                string name = match.Groups[1].Value.Trim();
-                string qtyStr = match.Groups[2].Value.Trim();
-                string unit = match.Groups[3].Value.Trim();
+    string name = match.Groups[1].Value.Trim();
+    string qtyStr = match.Groups[2].Value.Trim();
+    string unit = match.Groups[3].Value.Trim();
 
-                double qty = ParseQuantity(qtyStr);
+    double qty = ParseQuantity(qtyStr);
 
-                var product = _products.EnsureExists(name);
-                if (product == null)
-                    continue;
+    var product = _products.EnsureExists(name);
+    if (product == null)
+        continue;
+    double price100 = product.Price;           // цена за 100 г из JSON
+    double priceForQty = price100 * (qty / 100); // цена за qty грамм
 
-                result.Add(new ParsedIngredient
-                {
-                    Name = name,
-                    Quantity = qty,
-                    Unit = unit,
-                    Calories = product.CaloriesPerUnit * qty / 100.0,
-                    BreadUnits = product.BreadUnitsPerUnit * qty / 100.0
-                });
-            }
+    result.Add(new ParsedIngredient
+    {
+        Name = name,
+        Quantity = qty,
+        Unit = unit,
+        Calories = product.CaloriesPerUnit ,
+        BreadUnits = product.BreadUnitsPerUnit ,
+
+        // 🔥 Добавляем цену и магазин
+        Price = priceForQty,
+        Store = product.Store
+    });
+}
+
 
             return result;
         }
@@ -112,7 +121,8 @@ namespace MENU
                 { "щепотка", 1 },   { "щепотки", 1 },   { "по вкусу", 0 },
                 { "немного", 5 },   { "чуть-чуть", 3 },
                 { "капля", 1 },     { "капли", 1 },
-                { "кусочек", 10 },  { "пакетик", 10 }
+                { "кусочек", 10 },  { "пакетик", 10 },
+
             };
     }
 
@@ -123,5 +133,7 @@ namespace MENU
         public string Unit { get; set; }
         public double Calories { get; set; }
         public double BreadUnits { get; set; }
+        public double Price { get; set; }
+        public string Store { get; set; }
     }
 }

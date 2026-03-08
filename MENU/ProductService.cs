@@ -4,6 +4,8 @@ using System.Linq;
 using System.Windows.Forms;
 using MenuPlanner.Core;
 using MenuPlanner.Core.Models;
+using Microsoft.VisualBasic;
+
 
 namespace MENU
 {
@@ -39,16 +41,25 @@ namespace MENU
             if (ask == DialogResult.No)
                 return null;
 
-            string caloriesStr = Microsoft.VisualBasic.Interaction.InputBox(
+            string caloriesStr = Interaction.InputBox(
                 $"Введите калорийность (кКал на 100 г) для \"{name}\":",
                 "Новый продукт");
 
-            string buStr = Microsoft.VisualBasic.Interaction.InputBox(
+            string buStr = Interaction.InputBox(
                 $"Введите ХЕ (на 100 г) для \"{name}\":",
                 "Новый продукт");
 
+            string priceStr = Interaction.InputBox(
+                $"Введите цену за единицу для \"{name}\":",
+                "Новый продукт");
+
+            string store = Interaction.InputBox(
+                $"Введите магазин для \"{name}\":",
+                "Новый продукт");
+
             if (!double.TryParse(caloriesStr, out double calories) ||
-                !double.TryParse(buStr, out double bu))
+                !double.TryParse(buStr, out double bu) ||
+                !double.TryParse(priceStr, out double price))
             {
                 MessageBox.Show("Ошибка: неверный формат чисел.");
                 return null;
@@ -58,7 +69,9 @@ namespace MENU
             {
                 Name = name,
                 CaloriesPerUnit = calories,
-                BreadUnitsPerUnit = bu
+                BreadUnitsPerUnit = bu,
+                Price = price,
+                Store = store
             };
 
             ProductStorage.AddProduct(product);
@@ -66,6 +79,7 @@ namespace MENU
 
             return product;
         }
+
 
     }
 }

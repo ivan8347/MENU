@@ -9,50 +9,28 @@ namespace MenuPlanner.Core.Models
     public class Recipe
     {
         public string Name { get; set; }
-
         public string PhotoPath { get; set; }
         public string Instruction { get; set; }
         public string Category { get; set; }
-
-
         public bool CanBeFrozen { get; set; }
         public string VideoPath { get; set; }
 
         public List<RecipeIngredient> Ingredients { get; set; } = new List<RecipeIngredient>();
 
+        // Эти поля сохраняются в JSON
+        public double TotalCalories { get; set; }
+        public double TotalBreadUnits { get; set; }
+        public double TotalPrice { get; set; }
 
-        public double TotalCalories
+        // Автопересчёт после загрузки
+        public void Recalculate()
         {
-            get
-            {
-                double sum = 0;
-                foreach (var ing in Ingredients)
-                    sum += ing.Calories;
-                return sum;
-            }
-        }
+            TotalCalories = Ingredients.Sum(i => i.Calories);
+            TotalBreadUnits = Ingredients.Sum(i => i.BreadUnits);
+            TotalPrice = Ingredients.Sum(i => i.PricePerUnit);
 
-        public double TotalBreadUnits
-        {
-            get
-            {
-                double sum = 0;
-                foreach (var ing in Ingredients)
-                    sum += ing.BreadUnits;
-                return sum;
-            }
         }
-
-        public double TotalPrice
-        {
-            get
-            {
-                double sum = 0;
-                foreach (var ing in Ingredients)
-                    sum += ing.PricePerUnit * ing.Quantity;
-                return sum;
-            }
-        }
-
     }
 }
+
+

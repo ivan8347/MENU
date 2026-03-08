@@ -22,6 +22,12 @@ namespace MenuPlanner.Core
 
         // Приватный конструктор — чтобы нельзя было создать второй экземпляр
         private MenuService() { }
+
+        public void SaveRecipes()
+        {
+            var storage = new RecipeStorage();
+            storage.Save(Recipes);
+        }
     }
 }
 

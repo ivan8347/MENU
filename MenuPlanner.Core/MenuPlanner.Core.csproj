@@ -56,6 +56,7 @@
     <Compile Include="Models\YouTubeVideoInfo.cs" />
     <Compile Include="ProductStorage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecipeStorage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MenuPlanner.Core;
@@ -14,10 +15,12 @@ namespace MENU
     {
         private Recipe _recipeToEdit;
         private string _photoPath;
+       // private string currentPhotoPath;
 
         private YouTubeService _youtube;
         private ProductService _productService;
         private IngredientParserService _parser;
+
 
         public RecipeForm()
         {
@@ -144,8 +147,15 @@ namespace MENU
                 });
             }
 
+            // 🔵 Пересчёт итогов
+            recipe.Recalculate();
+
+            // 🔵 Добавляем новый рецепт, если это создание
             if (_recipeToEdit == null)
                 MenuService.Instance.Recipes.Add(recipe);
+
+            // 🔵 Сохраняем в JSON
+            MenuService.Instance.SaveRecipes();
 
             DialogResult = DialogResult.OK;
             Close();
@@ -159,13 +169,21 @@ namespace MENU
 
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
-                    _photoPath = dlg.FileName;
-                    picPhoto.Image = Image.FromFile(_photoPath);
+                    Directory.CreateDirectory("photos");
+
+                    var fileName = Path.GetFileName(dlg.FileName);
+                    var destPath = Path.Combine("photos", fileName);
+
+                    File.Copy(dlg.FileName, destPath, true);
+
+                    _photoPath = destPath;
+
+                    picPhoto.Image = Image.FromFile(destPath);
                 }
             }
-
-
         }
+
+
 
         private void UpdateTotals()
         {
@@ -180,14 +198,13 @@ namespace MENU
                 totalCalories += Convert.ToDouble(row.Cells[3].Value);
                 totalBreadUnits += Convert.ToDouble(row.Cells[4].Value);
 
-                double pricePerUnit = Convert.ToDouble(row.Cells[5].Value);
-                double qty = Convert.ToDouble(row.Cells[1].Value);
-                totalPrice += pricePerUnit * qty;
+                double rowPrice = Convert.ToDouble(row.Cells[5].Value); 
+                totalPrice += rowPrice;
             }
 
-            lblTotalCalories.Text = $"Калорийность: {totalCalories:F2}";
-            lblTotalBreadUnits.Text = $"ХЕ: {totalBreadUnits:F2}";
-            lblTotalPrice.Text = $"Стоимость: {totalPrice:F2} ₽";
+            lblTotalCalories.Text = $"Калорийность: {totalCalories:F1}/100г.";
+            lblTotalBreadUnits.Text = $"ХЕ: {totalBreadUnits:F1}/100г.";
+            lblTotalPrice.Text = $"Стоимость: {totalPrice:F2} руб.";
         }
 
         private async Task LoadYoutubeData(string url)
@@ -226,19 +243,20 @@ namespace MENU
             dgvIngredients.Rows.Clear();
 
             var items = await _parser.ParseAsync(txtInstruction.Text);
-
             foreach (var ing in items)
             {
+                var product = _productService.Find(ing.Name);
                 dgvIngredients.Rows.Add(
                     ing.Name,
                     ing.Quantity,
                     ing.Unit,
                     ing.Calories,
                     ing.BreadUnits,
-                    0,
-                    ""
+                    ing.Price,
+                    ing.Store
                 );
             }
+
 
             UpdateTotals();
         }
@@ -268,12 +286,15 @@ namespace MENU
                 MessageBox.Show("Не удалось открыть ссылку.");
             }
         }
+       
 
-        
+
 
         private void lblVideo_Click(object sender, EventArgs e)
         {
             OpenUrl(txtVideo.Text);
         }
+
+       
     }
 }
